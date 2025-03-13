@@ -1,69 +1,67 @@
-# Anilist CSS Collection
+# Anilist Custom CSS Theme
 
-A modular, customizable CSS collection for enhancing your Anilist profile page. This repository contains various CSS modules that can be imported individually or as a complete theme.
+A sleek, modular, and customizable CSS theme for Anilist profiles inspired by several popular Anilist themes. This theme features elegant animations, a beautiful banner display, and comprehensive styling for all profile sections.
 
-## Usage
+## Installation
 
-You can import any or all of the CSS files into your Anilist profile's custom CSS section:
+To use this theme on your Anilist profile:
 
-```css
-/* Core styles (recommended) */
-@import url("https://jmjaj.github.io/anilist/style.css");
-
-/* Optional modules */
-@import url("https://jmjaj.github.io/anilist/css/modules/animations.css");
-@import url("https://jmjaj.github.io/anilist/css/modules/navbar.css");
-@import url("https://jmjaj.github.io/anilist/css/modules/banner.css");
-@import url("https://jmjaj.github.io/anilist/css/modules/profile.css");
-@import url("https://jmjaj.github.io/anilist/css/modules/activities.css");
-@import url("https://jmjaj.github.io/anilist/css/modules/stats.css");
-```
+1. Go to your Anilist profile settings
+2. Navigate to the "Custom CSS" section
+3. Copy the entire content of `style.css` into the text area
+4. Save your changes
 
 ## Customization
 
-You can customize various aspects of the theme by setting CSS variables in your Anilist profile's custom CSS:
+The theme includes numerous customization options through CSS variables. Open `style.css` and modify the values in the `:root` section to change:
+
+- Theme colors
+- Avatar appearance
+- Background image
+- Animation settings
+- And more!
+
+### Example Customizations
 
 ```css
 :root {
-  /* General theme settings */
-  --theme-primary-color: #6a54c9;
-  --theme-secondary-color: #9370DB;
-  --theme-accent-color: #ff5e7d;
+  /* Change theme colors */
+  --theme-primary-color: #ff5e7d; /* Change to your preferred color */
+  --theme-secondary-color: #9370DB; /* Change to your preferred color */
   
-  /* Avatar settings */
-  --avatar-border-radius: 255px;
-  --avatar-size: 100px;
-  --avatar-url: url("YOUR_AVATAR_URL_HERE");
+  /* Change avatar */
+  --avatar-url: url("YOUR_AVATAR_URL_HERE"); /* Replace with your image URL */
+  --avatar-border-radius: 50%; /* Makes avatar circular */
   
-  /* Background settings */
-  --background-url: url("YOUR_BACKGROUND_URL_HERE");
-  --background-opacity: 0.8;
-  
-  /* Font settings */
-  --header-font: 'Satisfy', cursive;
-  --body-font: 'Roboto', sans-serif;
+  /* Change background */
+  --background-url: url("YOUR_BACKGROUND_URL_HERE"); /* Replace with your image URL */
 }
 ```
 
 ## Features
 
-- Modern visual design with customizable colors
-- Smooth animations and transitions
-- Responsive layout that adapts to different screen sizes
-- Customizable avatar, banner, and profile sections
-- Enhanced activity feed styling
-- Improved stats visualization
-- Custom cursor and scrollbar styling
+- **Beautiful Banner**: Custom banner styling with animated avatar
+- **Stylish Stats Display**: Elegant presentation of anime/manga statistics
+- **Animated Elements**: Smooth animations for various profile elements
+- **Responsive Design**: Works well on different screen sizes
+- **Customizable**: Extensive CSS variables for personalization
+- **Modular Structure**: Code organized into logical modules for easy understanding
 
 ## Credits
 
-Original design concepts from:
-- @Hyperixn
+This theme was inspired by and incorporates elements from the following Anilist users:
 - anilist.co/user/Anzu
 - anilist.co/user/BlueTaku
 - anilist.co/user/Megumin (Kurisu)
 - anilist.co/user/Sigma
+- anilist.co/user/Hyperixn
 
-## License
+## Preview
 
-MIT License 
+To see a preview of how the theme looks, open the `index.html` file in a web browser.
+
+## Notes
+
+- This is a modular CSS theme that has been structured to make customization easier
+- The CSS files in the `css/modules` directory contain specific styling for different parts of the profile
+- For best results, use high-quality images for avatar and background 

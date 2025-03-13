@@ -1,7 +1,7 @@
 /* 
  * Anilist Animations CSS Module
  * Version: 1.0.0
- * Last Updated: 2025-03-13
+ * Last Updated: 2023-03-13
  */
 
 /* Animation Variables */
@@ -35,7 +35,7 @@
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -2000px, 0);
   }
   to {
     opacity: 1;
@@ -46,7 +46,7 @@
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translate3d(-50px, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
   to {
     opacity: 1;
@@ -66,20 +66,43 @@
 }
 
 @keyframes swing {
-  20% {
-    transform: rotate3d(0, 0, 1, 15deg);
+  20% { 
+    transform: rotate3d(0, 0, 1, 40deg); 
   }
-  40% {
-    transform: rotate3d(0, 0, 1, -10deg);
+  40% { 
+    transform: rotate3d(0, 0, 1, -40deg); 
   }
-  60% {
-    transform: rotate3d(0, 0, 1, 5deg);
+  60% { 
+    transform: rotate3d(0, 0, 1, 20deg); 
   }
-  80% {
-    transform: rotate3d(0, 0, 1, -5deg);
+  80% { 
+    transform: rotate3d(0, 0, 1, -20deg); 
   }
-  to {
+  to { 
     transform: rotate3d(0, 0, 1, 0deg);
+    -webkit-animation-fill-mode: forwards; 
+  }
+}
+
+@keyframes hinge {
+  0% { 
+    animation-timing-function: ease-in-out; 
+  }
+
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 20deg);
+    animation-timing-function: ease-in-out;
+  }
+
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 10deg);
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(0, 700px, 0);
+    opacity: 0;
   }
 }
 
@@ -162,6 +185,12 @@
   animation-fill-mode: both;
 }
 
+.hinge {
+  animation-duration: calc(var(--animation-duration) * 2);
+  animation-name: hinge;
+  transform-origin: top left;
+}
+
 .pulse {
   animation-name: pulse;
   animation-duration: 2s;
@@ -178,11 +207,24 @@
 
 /* Applied Animations */
 .banner-content > .avatar {
-  animation: fadeInDown 1.5s ease-in-out, float 6s ease-in-out 1.5s infinite;
+  animation: fadeInDown 3s, float 20s infinite;
+  animation-iteration-count: 1, infinite;
 }
 
 .name-wrapper .name {
   animation: fadeInLeft 1.5s ease-in-out 0.5s both;
+}
+
+.banner-content:hover > .actions > .nav-btn {
+  animation: fadeInLeft 2s, hinge 8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.banner-content:hover > .name-wrapper > .name {
+  animation: fadeInLeft 2s, hinge 7s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .nav > .link, .nav > .browse-wrap {
@@ -265,7 +307,7 @@
   pointer-events: none;
 }
 
-/* Delay Utilities */
+/* Animation Delays */
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }

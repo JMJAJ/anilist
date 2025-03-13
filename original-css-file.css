@@ -1,0 +1,724 @@
+/* Anilist.co Custom CSS
+## - Name:        hyperixn-style.css
+## - Author:      @Hyperixn
+## - Last Update: 2021/10/17
+
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://github.com/animate-css/animate.css/blob/main/source/");
+
+/* 
+    ============================
+This CSS is a laboratory smash together from multiple CSS src's, changed and edited by myself.
+
+    Code Credits [Created by]:
+    * anilist.co/user/Anzu
+    * anilist.co/user/BlueTaku -> Banner Font Only
+    * anilist.co/user/Megumin (Kurisu)
+    * anilist.co/user/Sigma
+    ============================
+    Code Credits [Edited by]:
+    * anilist.co/user/Hyperixn
+    ============================
+*/
+
+/*  --------------------------------------------| ANIMATIONS || BASE: SIGMA |----------------------------------------------- */
+
+@charset "UTF-8";
+
+/*!
+ * animate.css - https://animate.style/
+ * Version - 4.1.1
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2020 Animate.css
+ */
+
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1
+}
+
+@keyframes swing {
+    20% { transform: rotate3d(0, 0, 1, 40deg); }
+    40% { transform: rotate3d(0, 0, 1, -40deg); }
+    60% { transform: rotate3d(0, 0, 1, 20deg); }
+    80% { transform: rotate3d(0, 0, 1, -20deg); }
+    to { transform: rotate3d(0, 0, 1, 0deg) -webkit-animation-fill-mode: forwards; }
+}
+
+@keyframes hinge {
+  0% { animation-timing-function: ease-in-out; }
+
+  20%, 60% {
+    transform: rotate3d(0, 0, 1, 20deg);
+    animation-timing-function: ease-in-out;
+  }
+
+  40%, 80% {
+    transform: rotate3d(0, 0, 1, 10deg);
+    animation-timing-function: ease-in-out;
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(0, 700px, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInDownBig { animation-name: fadeInDownBig; }
+
+.fadeInLeft { animation-name: fadeInLeft; }
+
+.hinge {
+    animation-duration: calc(var(--animate-duration) * 2);
+    animation-name: hinge;
+    transform-origin: top left;
+}
+
+.swing {
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+    -webkit-animation-name: swing;
+    animation-name: swing;
+}
+
+/*  --------------------------------------------| SETTINGS || BASE: ANZU |----------------------------------------------- */
+
+:root, .site-theme-dark, .site-theme-contrast {
+  /* General Settings */
+  --hokaze-br: 10px; /* Global Border Radius */
+  --hokaze-pv: 30px; /* Vertical Content Padding */
+  --hokaze-ph: 30px; /* Horizontal Content Padding */
+  --hokaze-bt: 0.3;  /* Content Background Transparency*/
+  --hokaze-nr: 30px; /* Navbar Border Radius */
+  --hokaze-nl: 80%;  /* Navbar Length */
+  --hokaze-sb: 4px;  /* Scrollbar Width */
+  --hokaze-vo: 0.7;  /* Opacity For Various Elements */
+  --hokaze-vs: 0.975;  /* Scale For Various Elements */text
+  --hokaze-vb: 2px;  /* Various Avatar Border Thickness */
+  --hokaze-sr: 4px;  /* Social Page Border Thickness */
+  --hokaze-fr: 30px; /* Footer Border Radius */
+  --hokaze-fl: 85%;  /* Footer Length */
+  --hokaze-bl: 4px;  /* Background 'Window' Blur Amount */
+  --hokaze-rs: 1.025; /* Scaling For Load More Button And Activity Input */
+  --hokaze-gs: var(--color-blue);    /* Stats Wrap Gradient Start Color */
+  --hokaze-ge: var(--color-blue-dim);    /* Stats Wrap Gradient End Color */
+  --hokaze-vt: all 0.5s ease-in-out; /* Transition For Various Elements */
+  --hokaze-li: initial; /* Anilist Logo Source */ 
+  --hokaze-lb: 0px;     /* Anilist Logo Border Thickness */
+  --hokaze-lr: 0px;     /* Anilist Logo Border Radius */
+  --hokaze-ls: 1.2;     /* Anilist Logo Hover Scaling */
+  --hokaze-bs: rgba(0, 0, 0, 0.07) 0px 1px 2px, /* Box Shadow */
+               rgba(0, 0, 0, 0.07) 0px 2px 4px,
+               rgba(0, 0, 0, 0.07) 0px 4px 8px,
+               rgba(0, 0, 0, 0.07) 0px 8px 16px;
+  --hokaze-ns: rgba(0, 0, 0, 0.07) 0px 1px 2px, /* Box Shadow For Navbar */
+               rgba(0, 0, 0, 0.07) 0px 2px 4px;
+
+/*  --------------------------------------------| AVATAR SETTINGS || BASE: ANZU |----------------------------------------------- */
+
+  --hokaze-as: 90px;   /* Avatar Size: One Value = Square, Two Values = Rectangle */
+  --hokaze-ap: 50% 20%; /* Inner Avatar Position */
+  --hokaze-ai: 100%; /* Avatar Size */
+  --hokaze-ab: 2px;   /* Avatar Border Thickness */
+  --hokaze-ar: 255px;  /* Avatar Border Radius */
+  --hokaze-at: all 1s ease-in-out; /* Avatar Hover Transition */
+  --hokaze-av: url("https://i.postimg.cc/wxG8MvXz/Miyamoto-Musashi.jpg");  /* Avatar Picture Link https://i.postimg.cc/k586pcqD/yunooo.jpg*/
+  --hokaze-ah: 1.1; /* Avatar Hover Scale */
+
+/*  --------------------------------------| MATHS - DON'T TOUCH || BASE: ANZU |----------------------------------------- */
+
+  --hokaze-brt: var(--hokaze-br) var(--hokaze-br) 0 0;
+  --hokaze-brb: 0 0 var(--hokaze-br) var(--hokaze-br);
+  --hokaze-bra: var(--hokaze-br) var(--hokaze-br) var(--hokaze-br) var(--hokaze-br);
+  --hokaze-pdh: var(--hokaze-pv) var(--hokaze-ph);
+  --hokaze-maw: calc(1520px - 2 * ( 100px - var(--hokaze-ph)));
+  --hokaze-abs: var(--hokaze-ab) solid rgb(var(--color-foreground));
+  --hokaze-nbr: 0 0 var(--hokaze-nr) var(--hokaze-nr);
+  --hokaze-nbl: calc((100% - var(--hokaze-nl)) / 2);
+  --hokaze-fbr: var(--hokaze-fr) var(--hokaze-fr) 0 0;
+  --hokaze-fbl: calc((100% - var(--hokaze-fl)) / 2);
+  --hokaze-bch: calc(330px - 75px);
+  --hokaze-bcc: calc(var(--hokaze-bch) / 2);
+  --hokaze-bctc: calc(var(--hokaze-bcc) - 36px / 2 );
+  --hokaze-vab: var(--hokaze-vb) solid rgb(var(--color-background));  
+  --hokaze-sab: var(--hokaze-sr) solid rgb(var(--color-background));
+  --hokaze-lob: var(--hokaze-lb) solid rgb(var(--color-blue));
+}
+
+/*  --------------------------------------------| M A I N-C O D E |----------------------------------------------- */
+/*  --------------------------------------------| BACKGROUND || BASE: SIGMA  |----------------------------------------------- */
+
+#app {
+    background-color: rgba(0, 0, 0, 0.275);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;    
+}
+
+body {
+    /* cursor: url(https://i.imgur.com/YFvThDh.png), auto; */
+    /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/anime/ani-12/ani1136.ani), url(https://cur.cursors-4u.net/anime/ani-12/ani1136.gif), auto !important;} /* End https://www.cursors-4u.com */
+    background-color: rgba(var(--color-background));
+    background: url("https://wallpaperaccess.com/full/400220.png");
+
+    background-position: center / 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/*  -----------------------------------------| HEADER NAV BAR || BASE: ANZU |-------------------------------------------- */
+ #nav {
+    background-color: rgba(255, 255, 255, 0) !important;
+    display: flex;
+    height: 50px !important;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: background .8s ease,color .2s;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100%;
+  }
+
+.nav > .wrap {
+    max-width:80%;
+    position: relative;
+    margin: 1vw;
+    background-color: rgba(0, 0, 0, 0.45) !important;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 50%);
+    border-radius: 15px;
+    transition: transform 0s ease-in-out;
+}
+
+.nav.nav-unscoped {
+    top: -60px !important;
+}
+
+.nav.nav-unscoped.transparent, .nav:hover {
+    top: 0px !important;
+}
+
+.links > .link:hover, .links > .browse-wrap:hover, .links > .browse-wrap > .link:hover {
+    color: rgba(var(--color-blue), 1);
+}
+
+#app > .progress {
+   /* background-color: rgb(var(--color-blue)); */
+}
+
+.logo > img {
+    /* content: url("https://i.postimg.cc/hGfYVX8S/pngfind-com-slime-png-3001754.png"); */
+    content: url("https://cdn.donmai.us/sample/b6/50/__rimuru_tempest_and_rimuru_tempest_tensei_shitara_slime_datta_ken_drawn_by_kuena__sample-b6507b6a11619900e1ce80a81cf35208.jpg");
+    padding: 7px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: transform 5s;
+}
+
+.logo:hover {
+  transform: scale(1.5); 
+}
+
+.search {
+    margin-right: 50px !important;
+}
+
+#nav > div.wrap > div.user {
+    left: -30px;
+}
+
+
+/*  -----------------------------------------| BANNER || BASE: ANZU |-------------------------------------------- */
+.content.container {
+    background: rgba(var(--color-foreground-grey), 0.35);
+    max-width: 75%;
+    padding: 30px;
+    border-radius: 0 0 30px 30px;
+    box-shadow: var(--hokaze-bs);
+}
+
+.banner {
+    visibility: hidden;
+}
+
+.banner > .container {
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+    transform: translate(500px, 0px);
+}
+
+.container > .banner-content {
+    width: 0;
+    height: var(--hokaze-bch);
+    margin-left: -650px;
+    margin-bottom: -10px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-content > .avatar {
+    position: relative;
+    width: 0;
+    height: 0;
+    padding: 100px;
+    background: var(--hokaze-av);
+    background-size: var(--hokaze-ai);
+    background-repeat: no-repeat;
+    background-position: var(--hokaze-ap);
+    border-radius: var(--hokaze-ar);
+    border: var(--hokaze-abs);
+    box-shadow: var(--hokaze-bs);
+
+    transform: rotate(-5deg);
+    animation: fadeInDownBig;
+    animation-duration: 3s, 20s;
+    animation-iteration-count: 1, infinite;
+
+    transition: var(--hokaze-at);
+}
+
+.banner-content > .name-wrapper .name {
+    font-size: 7.5rem;
+    padding: 30px 50px 0px 10px;
+    display: flex;
+    align-items: center;
+
+    font-family: "Satisfy", serif;
+    filter: drop-shadow(0px 0px 6px black);
+}
+
+.banner-content > .name-wrapper h1.name {
+    font-family: "Satisfy", serif;
+    filter: drop-shadow(0px 0px 6px black);
+
+    transform: translate(-50px, 0px);
+    opacity:0;
+}
+
+.banner-content > .mod-badge {
+    position: absolute;
+    bottom: var(--hokaze-bctc);
+    margin: 0;
+    padding: 11.5px 10px;
+    transition: var(--hokaze-at);
+}
+
+.banner-content > .mod-badge:hover {
+    background: rgba(var(--color-blue),1);
+}
+
+.banner-content > .actions {
+    position: absolute;
+    bottom: var(--hokaze-bctc);
+    margin: 0;
+    padding: 0;
+
+    transform: translateX(-100px);
+    opacity: 0;
+}
+
+.actions > .nav-btn {
+    width: 100px;
+    padding: 5px 5px;
+
+    transition: var(--hokaze-at);
+    opacity: 0;
+}
+
+.banner-content:hover > .avatar {
+    border-color: rgb(var(--color-blue));
+    transform: scale(var(--hokaze-ah));
+}
+
+.banner-content:hover > .mod-badge {
+    transform: translateX(-170px);
+}
+
+.banner-content:hover > .actions {
+    transform: translateX(185px);
+    opacity: 1;
+}
+
+.banner-content:hover > .actions > .nav-btn {
+    transform: translate(10px, -10px);
+
+    animation: fadeInLeft, hinge;
+    animation-duration: 2s, 8s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    transition: var(--hokaze-at);
+}
+
+.banner-content:hover > .name-wrapper > .name {
+    transform: translateX(5px);
+
+    animation: fadeInLeft, hinge;
+    animation-duration: 2s, 7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    transition: var(--hokaze-at);
+    opacity: 1;
+}
+
+.header-wrap > .nav-wrap {
+    max-width: 80%;
+    margin: 0 auto;
+    border-radius: 30px 30px 0 0;
+    box-shadow: var(--bays-ns);
+    position: relative;
+}
+  
+.nav > .link {
+    position: relative;
+}
+
+.nav > .link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 2px;
+    width: 0;
+    background: rgb(var(--color-blue));
+    transition: all 0.3s ease-in-out;
+}
+
+.nav > .link:hover::after {
+    left: 0;
+    width: 100%;
+    background: rgb(var(--color-blue));
+}
+
+.nav > .router-link-active::after {
+    left: 0;
+    width: 100%;
+    background: rgb(var(--color-blue-dim));
+  }
+
+.header-wrap .nav-wrap .nav .link:nth-child(7),
+.header-wrap .nav-wrap .nav .link:nth-child(8) {
+  width: 0;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+}
+
+/*  -----------------------------| ALTERNATIVE STATS || BASE: SIGMA |----------------------------------- */
+
+.section > .stats-wrap > .list-stats {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 25px !important;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.section > .stats-wrap > .list-stats > .footer {
+  width: 0;
+  height: 0;
+}
+
+.section > .stats-wrap > .list-stats > .stats-wrap {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 10px;
+  grid-template-columns: auto auto;
+  padding: 20px 40px;
+  text-align: left;
+}
+
+.section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(1) {
+  grid-row-start: span 2;
+}
+
+.section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(1) .value {
+  font-size: 5.5rem;
+text-align: center;
+    transform: translateX(-27.5px);
+}
+
+.section > .stats-wrap > .list-stats > .stats-wrap .stat .value {
+  font-size: 2rem;
+  padding-bottom: 0px;
+}
+
+.section > .stats-wrap > .list-stats > .stats-wrap .stat .label {
+  font-size: 1.2rem;
+}
+
+.section
+  > .stats-wrap
+  > .list-stats:nth-child(1)
+  .stat:nth-child(1)
+  .label:before {
+  content: "";
+  mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
+  -webkit-mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50%
+    50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  width: 19px;
+  height: 16px;
+  margin-right: 5px;
+  background-color: rgba(var(--color-text-light));
+}
+
+.section > .stats-wrap > .list-stats:nth-child(2) .stat:nth-child(1) .label,
+.section > .stats-wrap > .list-stats:nth-child(1) .stat:nth-child(1) .label {
+  display: flex;
+  align-items: center;
+  color: rgb(var(--color-text-light));
+}
+
+.section
+  > .stats-wrap
+  > .list-stats:nth-child(2)
+  .stat:nth-child(1)
+  .label:before {
+  content: "";
+  mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
+  -webkit-mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50%
+    50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  width: 13px;
+  height: 16px;
+  margin-right: 5px;
+  background-color: rgba(var(--color-text-light));
+}
+
+/*  -----------------------------| PROFILE | ACTIVITIES || BASE: SIGMA |----------------------------------- */
+
+.user .about > div.content-wrap, .activity-history, .favourite {
+    border-radius: 25px !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(160, 0, 255) rgba(30, 35, 45, 0.2);
+    max-height: none;
+}
+
+.activity-entry > .wrap, .reply {
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-color:  rgba(var(--color-blue), 0.65);
+
+    border-radius: 20px !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(160, 0, 255) rgba(30, 35, 45, 0.2);
+
+    transition: transform 1s ease-in-out;
+    transform: scale(1);
+}
+
+.activity-entry > .wrap:hover, .reply:hover {
+    border-color:  rgba(255, 0, 0, 0.75);
+    transition: transform 1s ease-in-out;
+    transform: scale(1.025);
+}
+
+/* Hide Genre Overview section */
+.desktop:nth-of-type(3) {
+    height: 0;
+    visibility: hidden;
+}
+
+.text > .header {
+    display: flex;
+    align-items: center;
+}
+
+.activity-entry > .wrap > .text .avatar {
+    border-style: solid;
+    border-width: thin;
+    border-radius: 20px;
+    border-color: rgba(var(--color-blue), 1);
+    transform: scale(1.1);
+}
+
+.text .header > .name {
+    padding-top: 5px;
+    line-height: 15px;
+}
+ 
+.text > .header > .donator-badge {
+    top: -8px;
+    left: -8px;
+}
+
+.activity-message > .wrap > .time, .activity-text > .wrap > .time {
+    left: 77px;
+    top: 42px;
+    font-weight: 300;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.activity-entry .wrap > .text {
+    margin: 0px 5px 5px 5px;
+}
+
+.activity-message .wrap > .text > .activity-markdown, .activity-text .wrap > .text > .activity-markdown  {
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(var(--color-text), 0.1);
+}
+
+.activity-message .wrap > .actions, .activity-text .wrap > .actions, .activity-text .wrap > .actions, .activity-text .wrap > .actions{
+    right: 0;
+    bottom: 0;
+    position: relative;
+    margin: -20px 0px 5px 25px;
+    font-size: 1.3rem;
+}
+
+.load-more {
+    font-family: 'Verdana', sans-serif;
+    font-size: 8rem;
+    color: rgba(var(--color-blue), 0.45);
+    margin:auto;
+    max-width: 200px;
+}
+
+.load-more:hover {
+    color: rgba(var(--color-blue), 1);
+}
+
+.desktop > .section-header, .section-header, .list-wrap > .section-name {
+    font-family: 'Satisfy', serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: rgba(var(--color-blue), 1);
+    text-decoration: underline;
+}
+
+.section-header > .el-dropdown, .filters .filter-group > .active, .stats > .filters > .filter-wrap, .medialist > .lists {
+    color: rgb(var(--color-blue));
+}
+
+.filters .filter-group > span:hover {
+    color: rgb(var(--color-blue));
+}
+
+
+/*  -----------------------------| EXTRAS | BUG-FIXES || BASE: KURISU |-------------------------------------- */
+
+.activity-markdown img {
+    border-radius: 30px;
+}
+
+.markdown hr {
+    border: solid 1px rgb(160, 0, 255);
+    border-radius: 1px;
+}
+
+.markdown blockquote {
+    margin-right: auto;
+}
+
+.hohDownload {
+    display: none;
+}
+
+.site-theme-dark {
+    --color-foreground: 0, 0, 0, .50;
+}
+
+/*  ---------------------------------| SHORT NAV BAR || BASE: KURISU + SIGMA |----------------------------------------- */
+
+.header-wrap > .nav-wrap {
+    background: rgb(var(--color-foreground));
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(0, 0, 0, 0);
+
+    width: 75%;
+    margin: 0 auto;
+    padding: 0px;
+    border-radius: 30px 30px 0px 0px;
+    position: relative;
+}
+
+.header-wrap > .nav-wrap {
+   color: rgb(255,255,255);
+}
+
+/*  ---------------------------------| ALIGNMENT FIXES || BASE: SIGMA |------------------------------------------ */
+
+.activity-feed-wrap, .stats-wrap {
+    padding-left: 5%;
+    max-width: 100%
+}
+
+.medialist > .lists {
+   padding-left: 50px;
+   padding-right: 50px;
+}
+
+.medialist > .lists > .actions {
+   transform: translate(-50px, 25px);
+}
+
+.favourites > .section-header {
+  padding-left: 12px;
+  align-items: center;
+}
+
+/*  ------------------------------| BROWSER: CHROME || BASE: KURISU |--------------------------------------- */
+
+::-webkit-scrollbar {
+    display: none;
+    width: 6px;
+    background: rgba(30, 35, 45, 0)
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(30, 35, 45, 0)
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a000ff;
+    -webkit-border-radius: 1ex;
+}
+
+/*  ------------------------------| BROWSER: FIREFOX || BASE: KURISU |--------------------------------------- */
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255, 0, 0) rgba(30, 35, 45, 0);
+}
