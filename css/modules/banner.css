@@ -1,0 +1,277 @@
+/* 
+ * Anilist Banner CSS Module
+ * Version: 1.0.0
+ * Last Updated: 2025-03-13
+ */
+
+/* Banner Variables */
+:root {
+  --banner-height: 330px;
+  --banner-padding: 30px;
+  --banner-name-font: var(--header-font);
+  --banner-name-size: 7.5rem;
+  --banner-name-color: white;
+  --banner-name-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+  
+  /* Avatar Specific Settings */
+  --avatar-border-color: var(--theme-primary-color);
+  --avatar-glow: 0 0 30px var(--theme-primary-color);
+  --avatar-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --avatar-rotation: -5deg;
+}
+
+/* Main Banner Container */
+.banner {
+  visibility: hidden;
+}
+
+.banner > .container {
+  visibility: visible;
+  align-items: center;
+  justify-content: center;
+  transform: translate(500px, 0px);
+}
+
+.container > .banner-content {
+  width: 0;
+  height: var(--banner-height);
+  margin-left: -650px;
+  margin-bottom: -10px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar Styling */
+.banner-content > .avatar {
+  position: relative;
+  width: 0;
+  height: 0;
+  padding: var(--avatar-size);
+  background: var(--avatar-url);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: var(--avatar-position);
+  border-radius: var(--avatar-border-radius);
+  border: var(--avatar-border) solid var(--avatar-border-color);
+  box-shadow: var(--box-shadow), var(--glow-shadow);
+  transform: rotate(var(--avatar-rotation));
+  transition: var(--avatar-transition);
+}
+
+/* Name Wrapper */
+.banner-content > .name-wrapper .name {
+  font-size: var(--banner-name-size);
+  padding: 30px 50px 0px 10px;
+  display: flex;
+  align-items: center;
+  font-family: var(--banner-name-font);
+  filter: drop-shadow(var(--banner-name-shadow));
+  background: linear-gradient(90deg, #fff, var(--theme-primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.banner-content > .name-wrapper h1.name {
+  font-family: var(--banner-name-font);
+  filter: drop-shadow(var(--banner-name-shadow));
+  transform: translate(-50px, 0px);
+  opacity: 0;
+}
+
+/* Name Glow Effect */
+.banner-content > .name-wrapper .name::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  width: calc(100% - 60px);
+  height: calc(100% - 30px);
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--theme-primary-color-rgb), 0.5) 0%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  opacity: 0.5;
+  z-index: -1;
+  transform: translateY(20px) scale(0.7);
+  transition: var(--avatar-transition);
+}
+
+.banner-content:hover > .name-wrapper .name::after {
+  opacity: 0.8;
+  transform: translateY(10px) scale(1);
+}
+
+/* Moderator Badge */
+.banner-content > .mod-badge {
+  position: absolute;
+  bottom: calc(var(--banner-height) / 4 - 18px);
+  margin: 0;
+  padding: 11.5px 10px;
+  transition: var(--avatar-transition);
+  border-radius: var(--element-border-radius);
+  background: rgba(16, 18, 26, 0.7);
+  box-shadow: var(--box-shadow);
+}
+
+.banner-content > .mod-badge:hover {
+  background: var(--theme-primary-color);
+  transform: translateX(-170px) scale(1.1);
+  box-shadow: var(--glow-shadow), var(--box-shadow);
+}
+
+/* Action Buttons */
+.banner-content > .actions {
+  position: absolute;
+  bottom: calc(var(--banner-height) / 4 - 18px);
+  margin: 0;
+  padding: 0;
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: var(--avatar-transition);
+}
+
+.actions > .nav-btn {
+  width: 100px;
+  padding: 8px 10px;
+  margin: 0 5px;
+  border-radius: var(--element-border-radius);
+  background: rgba(16, 18, 26, 0.7);
+  color: var(--theme-primary-color);
+  box-shadow: var(--box-shadow);
+  transition: var(--avatar-transition);
+  opacity: 0;
+  border: 1px solid rgba(var(--theme-primary-color-rgb), 0.3);
+}
+
+.actions > .nav-btn:hover {
+  background: var(--theme-primary-color);
+  color: white;
+  transform: translateY(-3px) !important;
+  box-shadow: var(--glow-shadow), var(--box-shadow);
+}
+
+/* Interactive Effects */
+.banner-content:hover > .avatar {
+  border-color: var(--theme-accent-color);
+  transform: scale(var(--avatar-scale)) rotate(0deg);
+  box-shadow: var(--glow-shadow), var(--box-shadow);
+}
+
+.banner-content:hover > .mod-badge {
+  transform: translateX(-170px);
+}
+
+.banner-content:hover > .actions {
+  transform: translateX(185px);
+  opacity: 1;
+}
+
+.banner-content:hover > .actions > .nav-btn {
+  transform: translate(10px, -10px);
+  opacity: 1;
+  animation-delay: calc(var(--animation-delay) * var(--index, 1));
+}
+
+.banner-content:hover > .name-wrapper > .name {
+  transform: translateX(5px);
+  opacity: 1;
+  background-size: 200% 100%;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* Additional Banner Styling */
+.header-wrap > .nav-wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  border-radius: var(--content-border-radius) var(--content-border-radius) 0 0;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  background: var(--dark-card-bg);
+  border-bottom: 1px solid var(--dark-border-color);
+}
+
+/* Banner Navigation Links */
+.header-wrap .nav-wrap .nav .link {
+  position: relative;
+  transition: var(--transition-speed) var(--transition-function);
+  color: rgba(var(--color-text), 0.8);
+}
+
+.header-wrap .nav-wrap .nav .link:hover {
+  color: var(--theme-primary-color);
+}
+
+.header-wrap .nav-wrap .nav .link:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--theme-primary-color), 
+    var(--theme-accent-color));
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.header-wrap .nav-wrap .nav .link:hover:after,
+.header-wrap .nav-wrap .nav .router-link-active:after {
+  width: 100%;
+  box-shadow: 0 0 10px rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+/* Optional: Badge for Profile Nav Links */
+.header-wrap .nav-wrap .nav .link:not(.router-link-active)::before {
+  content: var(--nav-symbol, "♦");
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: var(--theme-primary-color);
+  opacity: 0;
+  transition: var(--transition-speed) var(--transition-function);
+  text-shadow: 0 0 5px rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+.header-wrap .nav-wrap .nav .link:hover::before {
+  opacity: 1;
+  top: -20px;
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 1200px) {
+  :root {
+    --banner-name-size: 5.5rem;
+  }
+  
+  .container > .banner-content {
+    margin-left: -500px;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --banner-name-size: 3.5rem;
+    --banner-height: 280px;
+  }
+  
+  .container > .banner-content {
+    margin-left: -350px;
+  }
+  
+  .banner-content > .avatar {
+    padding: 80px;
+  }
+  
+  .actions > .nav-btn {
+    width: 80px;
+    padding: 3px;
+    font-size: 0.9rem;
+  }
+} 

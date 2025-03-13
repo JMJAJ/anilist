@@ -1,0 +1,292 @@
+/* 
+ * Anilist Profile CSS Module
+ * Version: 1.0.0
+ * Last Updated: 2025-03-13
+ */
+
+/* Profile Variables */
+:root {
+  --profile-card-radius: 25px;
+  --profile-card-bg: var(--dark-card-bg);
+  --profile-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --profile-card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --profile-card-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  --profile-card-hover-scale: 1.03;
+  
+  --favorite-item-radius: 15px;
+  --favorite-item-bg: rgba(16, 18, 26, 0.6);
+  --favorite-item-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --favorite-item-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --favorite-item-hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  --favorite-item-hover-scale: 1.05;
+  --favorite-item-hover-border: 2px solid var(--theme-primary-color);
+  
+  --about-section-max-height: 500px;
+  --about-section-padding: 25px;
+}
+
+/* About Section Styling */
+.user .about > div.content-wrap {
+  border-radius: var(--profile-card-radius) !important;
+  background: var(--profile-card-bg);
+  padding: var(--about-section-padding);
+  box-shadow: var(--profile-card-shadow);
+  transition: var(--profile-card-transition);
+  overflow: auto;
+  max-height: var(--about-section-max-height);
+  line-height: 1.6;
+  border: 1px solid var(--dark-border-color);
+}
+
+.user .about > div.content-wrap:hover {
+  box-shadow: var(--profile-card-hover-shadow);
+  transform: scale(1.01);
+  border-color: rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+/* Activity History */
+.activity-history {
+  border-radius: var(--profile-card-radius) !important;
+  background: var(--profile-card-bg);
+  box-shadow: var(--profile-card-shadow);
+  transition: var(--profile-card-transition);
+  overflow: hidden;
+  border: 1px solid var(--dark-border-color);
+}
+
+.activity-history:hover {
+  box-shadow: var(--profile-card-hover-shadow);
+  border-color: rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+/* Favorite Items */
+.favourite {
+  border-radius: var(--favorite-item-radius) !important;
+  overflow: hidden;
+  transition: var(--favorite-item-transition);
+  background: var(--favorite-item-bg);
+  box-shadow: var(--favorite-item-shadow);
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.favourite:hover {
+  transform: scale(var(--favorite-item-hover-scale));
+  box-shadow: var(--favorite-item-hover-shadow);
+  border: var(--favorite-item-hover-border);
+  z-index: 1;
+}
+
+/* Favourite Section Headers */
+.favourites .section-header {
+  padding-left: 12px;
+  align-items: center;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(var(--theme-primary-color-rgb), 0.3);
+}
+
+/* Hide Genre Overview Section */
+.desktop:nth-of-type(3) {
+  height: 0;
+  visibility: hidden;
+}
+
+/* Favourites Grid Layout */
+.favourite-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-gap: 15px;
+  padding: 15px;
+}
+
+.favourite-wrap .favourite {
+  margin: 0;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Favourite Cover Image */
+.favourite-wrap .favourite img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  filter: brightness(0.9);
+}
+
+.favourite-wrap .favourite:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Add Subtle Glow to Favourites */
+.favourite::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--theme-primary-color-rgb), 0.3) 0%,
+    transparent 80%
+  );
+  opacity: 0;
+  transition: var(--favorite-item-transition);
+  z-index: 1;
+}
+
+.favourite:hover::before {
+  opacity: 1;
+}
+
+/* Favourite Title Overlay */
+.favourite-wrap .favourite::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 10px 10px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0)
+  );
+  color: white;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  text-align: center;
+  z-index: 2;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.favourite-wrap .favourite:hover::after {
+  opacity: 1;
+}
+
+/* Media List Section */
+.medialist {
+  border-radius: var(--profile-card-radius);
+  overflow: hidden;
+  background: var(--profile-card-bg);
+  box-shadow: var(--profile-card-shadow);
+  transition: var(--profile-card-transition);
+  margin-top: 30px;
+  border: 1px solid var(--dark-border-color);
+}
+
+.medialist:hover {
+  box-shadow: var(--profile-card-hover-shadow);
+  border-color: rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+.medialist > .lists {
+  padding-left: 50px;
+  padding-right: 50px;
+  color: var(--theme-primary-color);
+}
+
+.medialist > .lists > .actions {
+  transform: translate(-50px, 25px);
+}
+
+/* Media List Entry Styling */
+.media-list-item {
+  transition: var(--profile-card-transition);
+  border-radius: var(--favorite-item-radius);
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: rgba(16, 18, 26, 0.3);
+  border: 1px solid rgba(var(--theme-primary-color-rgb), 0.1);
+}
+
+.media-list-item:hover {
+  transform: translateX(5px);
+  box-shadow: var(--favorite-item-shadow);
+  border-color: var(--theme-primary-color);
+  background: rgba(var(--theme-primary-color-rgb), 0.1);
+}
+
+.media-list-item .cover {
+  border-radius: var(--favorite-item-radius);
+  overflow: hidden;
+  transition: var(--profile-card-transition);
+}
+
+.media-list-item:hover .cover {
+  transform: scale(1.05);
+  box-shadow: var(--glow-shadow);
+}
+
+/* Status Distribution */
+.stats-wrap > .stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 15px;
+  padding: 15px;
+}
+
+.stats-wrap > .stat-cards > .stat-card {
+  background: var(--profile-card-bg);
+  border-radius: var(--favorite-item-radius);
+  padding: 15px;
+  box-shadow: var(--favorite-item-shadow);
+  transition: var(--profile-card-transition);
+  border: 1px solid var(--dark-border-color);
+}
+
+.stats-wrap > .stat-cards > .stat-card:hover {
+  transform: scale(1.02);
+  box-shadow: var(--favorite-item-hover-shadow);
+  border-color: var(--theme-primary-color);
+}
+
+/* Charts and Visualizations */
+.chart-container {
+  background: var(--profile-card-bg);
+  border-radius: var(--profile-card-radius);
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: var(--profile-card-shadow);
+  transition: var(--profile-card-transition);
+  border: 1px solid var(--dark-border-color);
+}
+
+.chart-container:hover {
+  transform: scale(1.01);
+  box-shadow: var(--profile-card-hover-shadow);
+  border-color: rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 760px) {
+  :root {
+    --about-section-max-height: 300px;
+    --about-section-padding: 15px;
+  }
+  
+  .favourite-wrap {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  
+  .favourite-wrap .favourite {
+    height: 150px;
+  }
+  
+  .medialist > .lists {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .medialist > .lists > .actions {
+    transform: translate(-20px, 25px);
+  }
+} 

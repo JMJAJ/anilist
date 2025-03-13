@@ -1,0 +1,201 @@
+/* 
+ * Anilist Navbar CSS Module
+ * Version: 1.0.0
+ * Last Updated: 2025-03-13
+ */
+
+/* Navbar Variables */
+:root {
+  --navbar-width: 80%;
+  --navbar-border-radius: 15px;
+  --navbar-background: rgba(0, 0, 0, 0.45);
+  --navbar-backdrop-filter: blur(8px);
+  --navbar-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  --navbar-transition: all 0.3s ease-in-out;
+  --navbar-height: 60px;
+  --navbar-logo-size: 40px;
+  --navbar-link-spacing: 20px;
+  --navbar-link-hover-effect: 2px solid var(--theme-primary-color);
+  
+  /* Customize with your own logo */
+  --navbar-logo-url: url("https://cdn.donmai.us/sample/b6/50/__rimuru_tempest_and_rimuru_tempest_tensei_shitara_slime_datta_ken_drawn_by_kuena__sample-b6507b6a11619900e1ce80a81cf35208.jpg");
+}
+
+/* Main Navbar Styles */
+#nav {
+  background-color: transparent !important;
+  display: flex;
+  height: var(--navbar-height) !important;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: var(--navbar-transition);
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav > .wrap {
+  max-width: var(--navbar-width);
+  position: relative;
+  margin: 1vw;
+  background-color: var(--navbar-background) !important;
+  backdrop-filter: var(--navbar-backdrop-filter);
+  -webkit-backdrop-filter: var(--navbar-backdrop-filter);
+  box-shadow: var(--navbar-box-shadow);
+  border-radius: var(--navbar-border-radius);
+  transition: var(--navbar-transition);
+}
+
+/* Navbar Animation */
+.nav.nav-unscoped {
+  top: -60px !important;
+}
+
+.nav.nav-unscoped.transparent, 
+.nav:hover {
+  top: 0px !important;
+}
+
+/* Navbar Links */
+.links > .link, 
+.links > .browse-wrap, 
+.links > .browse-wrap > .link {
+  transition: var(--navbar-transition);
+  position: relative;
+  padding: 0 var(--navbar-link-spacing);
+}
+
+.links > .link:hover, 
+.links > .browse-wrap:hover, 
+.links > .browse-wrap > .link:hover {
+  color: var(--theme-primary-color);
+}
+
+/* Anilist Logo */
+.logo > img {
+  content: var(--navbar-logo-url);
+  padding: 7px;
+  height: var(--navbar-logo-size);
+  width: var(--navbar-logo-size);
+  border-radius: 50%;
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+.logo:hover {
+  transform: scale(1.2);
+}
+
+/* Navbar Search */
+.search {
+  margin-right: 50px !important;
+}
+
+.search > .icon {
+  color: var(--theme-secondary-color);
+  transition: var(--navbar-transition);
+}
+
+.search:hover > .icon {
+  color: var(--theme-primary-color);
+  transform: scale(1.1);
+}
+
+/* User Avatar in Navbar */
+#nav > div.wrap > div.user {
+  left: -30px;
+}
+
+#nav > div.wrap > div.user > .avatar {
+  transition: var(--navbar-transition);
+}
+
+#nav > div.wrap > div.user:hover > .avatar {
+  border: 2px solid var(--theme-primary-color);
+  transform: scale(1.1);
+}
+
+/* Fancy Navigation Underlines */
+.nav > .link,
+.nav > .browse-wrap > .link {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav > .link::after,
+.nav > .browse-wrap > .link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 2px;
+  width: 0;
+  background: var(--theme-primary-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav > .link:hover::after,
+.nav > .browse-wrap > .link:hover::after {
+  left: 0;
+  width: 100%;
+  background: var(--theme-accent-color);
+}
+
+.nav > .router-link-active::after,
+.nav > .browse-wrap > .router-link-active::after {
+  left: 0;
+  width: 100%;
+  background: var(--theme-primary-color);
+}
+
+/* Hide Specific Nav Links (optional) */
+.header-wrap .nav-wrap .nav .link:nth-child(7),
+.header-wrap .nav-wrap .nav .link:nth-child(8) {
+  width: 0;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+}
+
+/* User Menu Dropdown Enhancement */
+.user-menu-dropdown {
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.user-menu-dropdown .dropdown-item {
+  transition: var(--navbar-transition);
+}
+
+.user-menu-dropdown .dropdown-item:hover {
+  background-color: rgba(var(--color-blue), 0.1);
+  color: var(--theme-primary-color);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 760px) {
+  :root {
+    --navbar-width: 95%;
+    --navbar-border-radius: 10px;
+    --navbar-link-spacing: 10px;
+  }
+  
+  #nav {
+    height: 50px !important;
+  }
+  
+  .nav > .wrap {
+    margin: 0.5vw;
+  }
+  
+  .logo > img {
+    height: 30px;
+    width: 30px;
+  }
+  
+  .search {
+    margin-right: 20px !important;
+  }
+} 

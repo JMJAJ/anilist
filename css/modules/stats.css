@@ -1,0 +1,210 @@
+/* 
+ * Anilist Stats CSS Module
+ * Version: 1.0.0
+ * Last Updated: 2025-03-13
+ */
+
+/* Stats Variables */
+:root {
+  --stats-border-radius: 25px;
+  --stats-border-width: 2px;
+  --stats-border-color: rgba(var(--theme-primary-color-rgb), 0.3);
+  --stats-bg-color: var(--dark-card-bg);
+  --stats-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  --stats-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --stats-gradient-start: var(--theme-primary-color);
+  --stats-gradient-end: var(--theme-accent-color);
+  --stats-hover-scale: 1.03;
+  --stats-main-value-size: 5.5rem;
+  --stats-value-size: 2rem;
+  --stats-label-size: 1.2rem;
+  --stats-gap: 15px;
+  --stats-padding: 25px 40px;
+}
+
+/* Stats Container */
+.section > .stats-wrap > .list-stats {
+  border-style: solid;
+  border-width: var(--stats-border-width);
+  border-radius: var(--stats-border-radius) !important;
+  border-color: var(--stats-border-color);
+  background: var(--stats-bg-color);
+  box-shadow: var(--stats-shadow);
+  transition: var(--stats-transition);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Gradient Overlay */
+.section > .stats-wrap > .list-stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, 
+    var(--stats-gradient-start), 
+    var(--stats-gradient-end));
+  box-shadow: 0 0 15px rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+/* Stats Hover Effect */
+.section > .stats-wrap > .list-stats:hover {
+  transform: scale(var(--stats-hover-scale));
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: var(--theme-primary-color);
+}
+
+/* Hide Footer */
+.section > .stats-wrap > .list-stats > .footer {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Stats Grid Layout */
+.section > .stats-wrap > .list-stats > .stats-wrap {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: var(--stats-gap);
+  grid-column-gap: var(--stats-gap);
+  grid-template-columns: auto auto;
+  padding: var(--stats-padding);
+  text-align: left;
+}
+
+/* Main Stat */
+.section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(1) {
+  grid-row-start: span 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  background: rgba(var(--theme-primary-color-rgb), 0.1);
+  border-radius: 15px;
+  box-shadow: inset 0 0 15px rgba(var(--theme-primary-color-rgb), 0.1);
+}
+
+/* Main Stat Value */
+.section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(1) .value {
+  font-size: var(--stats-main-value-size);
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(var(--theme-primary-color-rgb), 0.7);
+  transition: var(--stats-transition);
+}
+
+/* Other Stat Values */
+.section > .stats-wrap > .list-stats > .stats-wrap .stat .value {
+  font-size: var(--stats-value-size);
+  padding-bottom: 0px;
+  font-weight: 600;
+  transition: var(--stats-transition);
+  color: #fff;
+}
+
+/* Stat Labels */
+.section > .stats-wrap > .list-stats > .stats-wrap .stat .label {
+  font-size: var(--stats-label-size);
+  opacity: 0.8;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  color: rgb(var(--color-text-light));
+}
+
+/* Anime Stats Icons */
+.section > .stats-wrap > .list-stats:nth-child(1) .stat:nth-child(1) .label {
+  display: flex;
+  align-items: center;
+  color: rgb(var(--color-text-light));
+}
+
+.section > .stats-wrap > .list-stats:nth-child(1) .stat:nth-child(1) .label:before {
+  content: "";
+  mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
+  -webkit-mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  width: 19px;
+  height: 16px;
+  margin-right: 5px;
+  background-color: rgba(var(--theme-primary-color-rgb), 0.8);
+}
+
+/* Manga Stats Icons */
+.section > .stats-wrap > .list-stats:nth-child(2) .stat:nth-child(1) .label {
+  display: flex;
+  align-items: center;
+  color: rgb(var(--color-text-light));
+}
+
+.section > .stats-wrap > .list-stats:nth-child(2) .stat:nth-child(1) .label:before {
+  content: "";
+  mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
+  -webkit-mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  width: 13px;
+  height: 16px;
+  margin-right: 5px;
+  background-color: rgba(var(--theme-primary-color-rgb), 0.8);
+}
+
+/* Stats Highlights on Hover */
+.section > .stats-wrap > .list-stats:hover > .stats-wrap .stat .value {
+  color: #fff;
+  text-shadow: 0 0 5px rgba(var(--theme-primary-color-rgb), 0.5);
+}
+
+.section > .stats-wrap > .list-stats:hover > .stats-wrap .stat:hover .value {
+  transform: scale(1.1);
+  color: var(--theme-primary-color);
+  text-shadow: 0 0 10px rgba(var(--theme-primary-color-rgb), 0.7);
+}
+
+/* Stats Hover State */
+.section > .stats-wrap > .list-stats:hover > .stats-wrap .stat:hover {
+  background: rgba(var(--theme-primary-color-rgb), 0.1);
+  border-radius: 10px;
+}
+
+.section > .stats-wrap > .list-stats:hover > .stats-wrap .stat:nth-child(1):hover {
+  background: rgba(var(--theme-primary-color-rgb), 0.2);
+}
+
+/* Add Glow to Stat Numbers */
+.section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(n+2) .value {
+  background: linear-gradient(135deg, #fff, var(--theme-primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 2px rgba(var(--theme-primary-color-rgb), 0.5));
+}
+
+/* Enhanced Stats Layout for Smaller Screens */
+@media (max-width: 760px) {
+  :root {
+    --stats-main-value-size: 4rem;
+    --stats-value-size: 1.5rem;
+    --stats-label-size: 1rem;
+    --stats-padding: 15px 25px;
+  }
+  
+  .section > .stats-wrap > .list-stats > .stats-wrap {
+    grid-template-columns: 1fr;
+  }
+  
+  .section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(1) {
+    grid-row-start: auto;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(var(--theme-primary-color-rgb), 0.2);
+    padding-bottom: 15px;
+  }
+} 

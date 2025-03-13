@@ -1,0 +1,248 @@
+/* 
+ * Anilist Core CSS
+ * Version: 1.0.0
+ * Last Updated: 2025-03-13
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Root Variables - Customize these in your own CSS */
+:root {
+  /* Theme Colors */
+  --theme-primary-color: #9370DB;
+  --theme-primary-color-rgb: 147, 112, 219;
+  --theme-secondary-color: #6a54c9;
+  --theme-secondary-color-rgb: 106, 84, 201;
+  --theme-accent-color: #ff5e7d;
+  --theme-accent-color-rgb: 255, 94, 125;
+  --theme-gradient-start: var(--theme-primary-color);
+  --theme-gradient-end: var(--theme-accent-color);
+  
+  /* Dark Mode Colors */
+  --dark-bg-color: 11, 15, 25;
+  --dark-card-bg: rgba(16, 18, 26, 0.85);
+  --dark-card-bg-hover: rgba(20, 22, 30, 0.95);
+  --dark-border-color: rgba(147, 112, 219, 0.3);
+  
+  /* Font Settings */
+  --header-font: 'Satisfy', cursive;
+  --body-font: 'Poppins', sans-serif;
+  --alt-font: 'Roboto', sans-serif;
+  
+  /* Layout Settings */
+  --content-width: 75%;
+  --content-padding: 30px;
+  --content-border-radius: 30px;
+  --card-border-radius: 15px;
+  --element-border-radius: 10px;
+  
+  /* Avatar Settings */
+  --avatar-border-radius: 50%;
+  --avatar-size: 100px;
+  --avatar-border: 3px;
+  --avatar-url: url("https://i.postimg.cc/wxG8MvXz/Miyamoto-Musashi.jpg");
+  --avatar-position: 50% 20%;
+  --avatar-scale: 1.1;
+  
+  /* Animation Settings */
+  --transition-speed: 0.5s;
+  --transition-function: ease-in-out;
+  
+  /* Background Settings */
+  --background-url: url("https://wallpaperaccess.com/full/400220.png");
+  --background-opacity: 1.0;
+  --content-bg-opacity: 0.20;
+  
+  /* Scrollbar Settings */
+  --scrollbar-width: 6px;
+  --scrollbar-color: var(--theme-primary-color);
+  --scrollbar-bg: rgba(30, 35, 45, 0);
+  
+  /* Custom Cursor */
+  --cursor-url: url(https://cur.cursors-4u.net/anime/ani-12/ani1136.ani), url(https://cur.cursors-4u.net/anime/ani-12/ani1136.gif), auto;
+  
+  /* Shadow Effects */
+  --box-shadow: 
+    rgba(0, 0, 0, 0.2) 0px 4px 10px, 
+    rgba(0, 0, 0, 0.15) 0px 8px 20px, 
+    rgba(0, 0, 0, 0.1) 0px 16px 30px;
+  
+  --glow-shadow:
+    0 0 5px rgba(var(--theme-primary-color-rgb), 0.5),
+    0 0 15px rgba(var(--theme-primary-color-rgb), 0.3),
+    0 0 30px rgba(var(--theme-primary-color-rgb), 0.2);
+}
+
+/* Global Styles */
+body {
+  cursor: var(--cursor-url) !important;
+  background-color: rgba(var(--dark-bg-color));
+  background: var(--background-url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: var(--body-font);
+  color: #fff;
+}
+
+#app {
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;    
+}
+
+.content.container {
+  background: var(--dark-card-bg);
+  max-width: var(--content-width);
+  padding: var(--content-padding);
+  border-radius: 0 0 var(--content-border-radius) var(--content-border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--dark-border-color);
+}
+
+/* Section Headers */
+.desktop > .section-header, 
+.section-header, 
+.list-wrap > .section-name {
+  font-family: var(--header-font);
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--theme-primary-color);
+  text-shadow: 0 0 10px rgba(var(--theme-primary-color-rgb), 0.3);
+}
+
+/* Link Colors */
+a:hover, 
+.section-header > .el-dropdown, 
+.filters .filter-group > .active, 
+.stats > .filters > .filter-wrap, 
+.medialist > .lists {
+  color: var(--theme-primary-color);
+}
+
+.filters .filter-group > span:hover {
+  color: var(--theme-accent-color);
+  transition: var(--transition-speed) var(--transition-function);
+}
+
+/* Load More Button */
+.load-more {
+  font-family: var(--alt-font);
+  font-size: 2rem;
+  color: rgba(var(--theme-primary-color-rgb), 0.7);
+  margin: 20px auto;
+  padding: 10px 30px;
+  max-width: 200px;
+  border-radius: var(--element-border-radius);
+  transition: all var(--transition-speed) var(--transition-function);
+  background: rgba(var(--dark-bg-color), 0.4);
+}
+
+.load-more:hover {
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: var(--box-shadow);
+  background: var(--theme-primary-color);
+}
+
+/* Scrollbar Styling (Webkit) */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary-color);
+  border-radius: var(--element-border-radius);
+}
+
+/* Scrollbar Styling (Firefox) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-primary-color) var(--scrollbar-bg);
+}
+
+/* Markdown Styling */
+.activity-markdown img {
+  border-radius: var(--card-border-radius);
+  max-width: 100%;
+  transition: transform var(--transition-speed) var(--transition-function);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+.activity-markdown img:hover {
+  transform: scale(1.02);
+}
+
+.markdown hr {
+  border: solid 1px var(--theme-primary-color);
+  border-radius: 1px;
+}
+
+.markdown blockquote {
+  margin-right: auto;
+  border-left: 3px solid var(--theme-accent-color);
+  padding-left: 15px;
+  background: rgba(var(--theme-accent-color-rgb), 0.1);
+}
+
+/* Alignment and Media Queries */
+.activity-feed-wrap, .stats-wrap {
+  padding-left: 5%;
+  max-width: 100%;
+}
+
+.medialist > .lists {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/* Hide unwanted elements */
+.hohDownload {
+  display: none;
+}
+
+/* Darkmode Theme */
+.site-theme-dark {
+  --color-foreground: 16, 18, 26, .85;
+  --color-foreground-grey: 16, 18, 26;
+  --color-background: 11, 15, 25;
+  --color-text: 232, 236, 241;
+  --color-text-light: 159, 173, 189;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1200px) {
+  :root {
+    --content-width: 90%;
+    --content-padding: 20px;
+  }
+  
+  .desktop > .section-header, 
+  .section-header, 
+  .list-wrap > .section-name {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --content-width: 95%;
+    --content-padding: 15px;
+  }
+  
+  .desktop > .section-header, 
+  .section-header, 
+  .list-wrap > .section-name {
+    font-size: 2rem;
+  }
+} 

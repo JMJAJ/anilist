@@ -1,0 +1,54 @@
+/* 
+ * Anilist Enhanced Dark Theme
+ * Version: 1.1.0
+ * Author: @JMJAJ
+ * Last Updated: 2025-03-13
+ * 
+ * A visually stunning dark mode theme for Anilist profiles
+ * featuring subtle animations, elegant cards, and a cohesive
+ * dark aesthetic with accent highlights.
+ */
+
+/* Import modular CSS components */
+@import url("https://jmjaj.github.io/anilist/css/core.css");
+@import url("https://jmjaj.github.io/anilist/css/modules/animations.css");
+@import url("https://jmjaj.github.io/anilist/css/modules/navbar.css");
+@import url("https://jmjaj.github.io/anilist/css/modules/banner.css");
+@import url("https://jmjaj.github.io/anilist/css/modules/profile.css");
+@import url("https://jmjaj.github.io/anilist/css/modules/activities.css");
+@import url("https://jmjaj.github.io/anilist/css/modules/stats.css");
+@import url("https://jmjaj.github.io/anilist/css/modules/social.css");
+
+/* Custom Overrides - Personalize your theme below */
+:root {
+  /* Theme Colors - Choose your color scheme */
+  --theme-primary-color: #9370DB; /* Main theme color - rich purple */
+  --theme-primary-color-rgb: 147, 112, 219; /* Same color in RGB format */
+  --theme-secondary-color: #6a54c9; /* Secondary theme color - deeper purple */
+  --theme-secondary-color-rgb: 106, 84, 201; /* Same color in RGB format */
+  --theme-accent-color: #ff5e7d; /* Accent color for highlights - vibrant pink */
+  --theme-accent-color-rgb: 255, 94, 125; /* Same color in RGB format */
+  
+  /* Dark Mode Settings - Refine darkness levels */
+  --dark-bg-color: 11, 15, 25; /* Dark background base color */
+  --dark-card-bg: rgba(16, 18, 26, 0.85); /* Dark panel color */
+  --dark-card-bg-hover: rgba(20, 22, 30, 0.95); /* Darker panel color on hover */
+  --dark-border-color: rgba(147, 112, 219, 0.3); /* Subtle border color */
+  
+  /* Avatar Settings - Customize your avatar */
+  --avatar-border-radius: 50%; /* Circle avatar */
+  --avatar-size: 110px; /* Avatar size */
+  --avatar-border: 3px; /* Border thickness */
+  /* Replace with your avatar URL */
+  --avatar-url: url("https://i.postimg.cc/wxG8MvXz/Miyamoto-Musashi.jpg");
+  
+  /* Background Settings - Choose your background */
+  /* Replace with your background URL - dark city or space backgrounds work best */
+  --background-url: url("https://wallpaperaccess.com/full/400220.png");
+  --background-opacity: 1.0; /* Full opacity */
+  
+  /* Social Settings - Customize badges and icons */
+  --nav-symbol: "♦"; /* Symbol above nav links on hover */
+  --discord-user: "@username"; /* Your Discord username */
+  --follower-badge-text: "follows you"; /* Text shown for followers */
+} 
